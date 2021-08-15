@@ -1,0 +1,14 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block featured %}
+		<div class="featured">
+			<div class="tab-content">
+				<div class="row{{ num }}">
+					{% for object in paginator %}
+						{% include 'product_block.html' %}
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+{% endblock %}

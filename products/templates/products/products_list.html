@@ -1,0 +1,16 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+
+    <div class="tab-content">
+        <div class="row">
+        {% for object in object_list %}
+            <p>{{ object.title }}</p>
+            {% include 'products/product_block.html' %}
+            {% if not forloop.last  %}
+                 {% cycle '' '' '</div><div class="row">' %}
+            {% endif %}
+        {% endfor %}
+        </div>
+    </div>
+{% endblock content %}

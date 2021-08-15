@@ -1,0 +1,9 @@
+{% load static %}
+<div class="block">
+    <a href="{{ object.get_absolute_url }}"><img src="{{ object.get_picture.image.url }}" alt="{{ object }}" width="268" height="268">
+        <div class="text">
+            <h4>{{ object }}</h4>
+            <p>{{ object.description }}</p>
+        </div>
+    </a>
+</div>

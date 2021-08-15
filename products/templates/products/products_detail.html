@@ -1,0 +1,37 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+
+<div class="tab-content" style="display:block;">
+    <div class="details-products">
+        <div class="details-slider">
+            {% with default_image=object.get_picture.image.url|default:'' %}
+                <div class="slider-product">
+                    <img src="{{ current_image|default:default_image }}"  style="height:560px;max-height: 560px;max-width:560px;">
+                </div>
+    	    {% endwith %}
+            <div class="slider-control">
+        	    {% if request.user.is_staff %}
+        	    <div class="block last">
+                    <a href="#"><img src="{% static 'img/add.png' %}" class="add" alt="{% trans 'Add' %}">
+                        <div class="text">{% trans 'Add' %}</div>
+                    </a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+
+    <div class="description">
+        <h3 class="big-bold">{{ object }}</h3>
+        <h3 class="red">{{ object.manufacture }}</h3>
+        <p class="price"> {{ object.price }} <span>{% trans 'руб.' %}</span></p>
+        {% if request.user.is_staff %}
+            <a href="{% url 'products:ProductUpdate' object.id %}" class="red-button">{% trans 'Change' %} <span class="fa fa-chevron-right" aria-hidden="true"></span></a>
+        {% endif %}
+    </div>
+</div>
+    </div>
+
+{% endblock content %}
